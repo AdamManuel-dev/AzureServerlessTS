@@ -1,0 +1,51 @@
+{
+  "name": "type-graph-ql-midtown",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "build:production": "npm run clean && yarn && npm run build && func extensions install",
+    "format": "yarn prettier -w ./graphql/",
+    "clean": "rm -rf ./build && echo \"Build Folder Cleaned\" && rm -rf ./node_modules && echo \"Node Modules Cleaned\"",
+    "start": "func start --auth",
+    "start:verbose": "func start --auth --verbose",
+    "setup": "ts-node scripts/getJSONs.ts",
+    "moveToProd": "cd ./dist",
+    "dev": "run-s build start",
+    "deploy": "func azure functionapp publish azure-function-app",
+    "pipeline": "run-s build:production setup moveToProd deploy",
+    "storage": "npx azurite"
+  },
+  "dependencies": {
+    "@azure/cosmos": "^3.9.5",
+    "@sentry/node": "^6.0.1",
+    "@sentry/tracing": "^6.0.1",
+    "@types/jwt-decode": "^2.2.1",
+    "axios": "^0.21.1",
+    "azure-functions-ts-essentials": "^1.3.2",
+    "class-validator": "^0.12.2",
+    "dotenv": "^8.2.0",
+    "jwt-decode": "^3.0.0-beta.2",
+    "log-symbols": "^4.0.0",
+    "reflect-metadata": "^0.1.13",
+    "sort-keys": "^4.2.0",
+    "ts-node": "^9.0.0",
+    "type-fest": "^0.20.2",
+    "typescript": "^4.0.3"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.6",
+    "@types/json-query": "^2.2.0",
+    "@types/lodash": "^4.14.166",
+    "chokidar": "^3.4.2",
+    "dlv": "^1.1.3",
+    "fs-extra": "^9.1.0",
+    "json-query": "^2.2.2",
+    "lodash": "^4.17.20",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.2.1",
+    "rimraf": "^3.0.2",
+    "totalist": "^2.0.0"
+  }
+}

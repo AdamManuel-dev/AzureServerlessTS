@@ -1,0 +1,17 @@
+{
+  "scriptFile": "./index.ts",
+  "bindings": [
+    {
+      "type": "cosmosDBTrigger",
+      "name": "documents",
+      "direction": "in",
+      "leaseCollectionName": "leases",
+      "connectionStringSetting": "CosmosDB",
+      "databaseName": "Midtown",
+      "collectionName": "Development",
+      "leaseCollectionPrefix": "LeadAggregate",
+      "createLeaseCollectionIfNotExists": "true"
+    }
+  ],
+  "disabled": false
+}
